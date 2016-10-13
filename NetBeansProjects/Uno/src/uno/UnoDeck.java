@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class UnoDeck {
-    private ArrayList<UnoCard> deck;
-    private Stack discardPile;
-    private int topOfDeck = deck.size() - 1;
+    private ArrayList<UnoCard> deck = new ArrayList<>();
+    private Stack<UnoCard> discardPile = new Stack<>();
+    private int topOfDeck;
     
     private final int numberCards = 76;
     private final int drawCards = 8;
@@ -29,6 +29,7 @@ public class UnoDeck {
         addWildDraws();
         shuffle();
         shuffle();
+        topOfDeck = deck.size() - 1;
     }
     
     private void shuffle(){
@@ -47,6 +48,15 @@ public class UnoDeck {
     }
     
     public UnoCard draw(){
+        if(deck.isEmpty()){
+            discardPile.forEach((card) -> {
+                deck.add(discardPile.pop());
+            });
+            shuffle();
+            shuffle();
+            topOfDeck = deck.size() - 1;
+            discardFirstCard();
+        }
         UnoCard card = deck.get(topOfDeck);
         deck.remove(topOfDeck);
         topOfDeck--;
@@ -58,7 +68,7 @@ public class UnoDeck {
     }
     
     public UnoCard getTopOfDiscardPile(){
-        return (UnoCard)discardPile.peek();
+        return discardPile.peek();
     }
     
     public void setTopOfDiscardPile(UnoCard card){
@@ -130,37 +140,37 @@ public class UnoDeck {
     }
 
     private void addGreenNumbers() {
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorGreen, i));
         }
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorGreen, i));
         }
     }
 
     private void addYellowNumbers() {
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorYellow, i));
         }
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorYellow, i));
         }
     }
 
     private void addBlueNumbers() {
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorBlue, i));
         }
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorBlue, i));
         }
     }
 
     private void addRedNumbers() {
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorRed, i));
         }
-        for (int i = 0; i < numberCards / 8; i++) {
+        for (int i = 0; i < (numberCards / 8) + 1; i++) {
             deck.add(new UnoNumber(colorRed, i));
         }
     }
