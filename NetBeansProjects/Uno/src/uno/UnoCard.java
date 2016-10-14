@@ -7,4 +7,8 @@ public abstract class UnoCard {
         public String getColor(){
             return this.color;
         }
+        
+        public void setColor(String color){
+            this.color = color;
+        }
 }

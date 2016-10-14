@@ -19,6 +19,7 @@ public class UnoController {
         Model.setCurrentPlayerIndex();
         View.clearPlayersLabel();
         Model.startGame(numPlayers);
+        View.setDiscardPile(View.getImage(Model.getTopOfDeck()));
         View.showPanel();
         startTurn();
     }
@@ -60,20 +61,43 @@ public class UnoController {
     
     public void displayHandCards(){
         int h = Model.getCurrentPlayer().getHand().size();
+        if (h > 25){ // Handle if hand is bigger than the screen allows
+            h = 25;
+        }
         ImageIcon image;
         for (int i = 0; i < h; i++){
             image = View.getImage(Model.getCurrentPlayer().getHand().get(i));
-            View.labelArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/UnoRed1.JPG")));
+            View.labelArray[i].setIcon(image);
             View.labelArray[i].setVisible(true);
+            View.currentHand[i] = Model.getCurrentPlayer().getHand().get(i);
         }
         for (int i = h; i < 26; i++){
-            View.labelArray[i].setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/UnoRed1.JPG")));;
+            View.labelArray[i].setVisible(false);
         }
     }
     
-    public void displayDiscardCard(){
-        ImageIcon image;
-        image = View.getImage(Model.getTopOfDeck());
-        View.setDiscardPile(image);
+    public void discardCard(UnoCard card){
+        Model.discard(card);
+        if (wildCardPopUp()){
+            Model.getTopOfDeck().setColor(View.chooseColor());
+            Model.setWildCardPopUp();
+        }
+        if(!Model.getCantPlay()){
+            startTurn();
+            Model.setCantPlay();
+        }
     }
+    
+    public boolean invalidPlay(){
+        return Model.getCantPlay();
+    }
+    
+    public UnoCard getTopOfDeck(){
+        return Model.getTopOfDeck();
+    }
+    
+    public boolean wildCardPopUp(){
+        return Model.getWildCardPopUp();
+    }
+    
 }

@@ -18,6 +18,7 @@ public class UnoView extends javax.swing.JFrame {
 
     public UnoController controller;
     public JLabel[] labelArray = new JLabel[26];
+    public UnoCard[] currentHand = new UnoCard[26];
     /**
      * Creates new form UnoView
      */
@@ -47,7 +48,6 @@ public class UnoView extends javax.swing.JFrame {
         endTurnButton = new javax.swing.JButton();
         drawButton = new javax.swing.JButton();
         currentPlayerHand = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -73,8 +73,10 @@ public class UnoView extends javax.swing.JFrame {
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         deckPile = new javax.swing.JPanel();
         discardPile = new javax.swing.JPanel();
+        topOfDiscardPile = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -114,63 +116,194 @@ public class UnoView extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
 
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel14.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel14MouseClicked(evt);
+            }
+        });
 
-        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel15.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel15MouseClicked(evt);
+            }
+        });
 
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel16MouseClicked(evt);
+            }
+        });
 
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
 
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
 
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel20MouseClicked(evt);
+            }
+        });
 
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel21MouseClicked(evt);
+            }
+        });
 
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel22.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel22MouseClicked(evt);
+            }
+        });
 
-        jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel23.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel23MouseClicked(evt);
+            }
+        });
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel24MouseClicked(evt);
+            }
+        });
 
-        jLabel24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
 
-        jLabel25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel26.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel26MouseClicked(evt);
+            }
+        });
 
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/test.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout currentPlayerHandLayout = new javax.swing.GroupLayout(currentPlayerHand);
         currentPlayerHand.setLayout(currentPlayerHandLayout);
         currentPlayerHandLayout.setHorizontalGroup(
             currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(currentPlayerHandLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,20 +359,21 @@ public class UnoView extends javax.swing.JFrame {
         currentPlayerHandLayout.setVerticalGroup(
             currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(currentPlayerHandLayout.createSequentialGroup()
-                .addGroup(currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel4))
+                .addGroup(currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel6)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel8)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel10)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel13)
+                        .addComponent(jLabel4))
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(currentPlayerHandLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
@@ -266,18 +400,30 @@ public class UnoView extends javax.swing.JFrame {
         );
         deckPileLayout.setVerticalGroup(
             deckPileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 164, Short.MAX_VALUE)
         );
+
+        topOfDiscardPile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/uno/images/Blue0.JPG"))); // NOI18N
 
         javax.swing.GroupLayout discardPileLayout = new javax.swing.GroupLayout(discardPile);
         discardPile.setLayout(discardPileLayout);
         discardPileLayout.setHorizontalGroup(
             discardPileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 157, Short.MAX_VALUE)
+            .addGroup(discardPileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(discardPileLayout.createSequentialGroup()
+                    .addGap(58, 58, 58)
+                    .addComponent(topOfDiscardPile, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(59, Short.MAX_VALUE)))
         );
         discardPileLayout.setVerticalGroup(
             discardPileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 164, Short.MAX_VALUE)
+            .addGroup(discardPileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(discardPileLayout.createSequentialGroup()
+                    .addGap(50, 50, 50)
+                    .addComponent(topOfDiscardPile)
+                    .addContainerGap(51, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -309,9 +455,9 @@ public class UnoView extends javax.swing.JFrame {
                         .addComponent(currentPlayerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(397, 397, 397))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addGap(113, 113, 113)
                 .addComponent(currentPlayerHand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(161, 161, 161))
+                .addGap(150, 150, 150))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,18 +475,18 @@ public class UnoView extends javax.swing.JFrame {
                         .addComponent(unoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 24, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(endTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(drawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(discardPile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(deckPile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(drawButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))
+                            .addComponent(discardPile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(deckPile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)))
-                .addComponent(currentPlayerHand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(currentPlayerHand, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(currentPlayerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57))
         );
@@ -354,8 +500,8 @@ public class UnoView extends javax.swing.JFrame {
                 .addComponent(start, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(help, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(324, Short.MAX_VALUE))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -427,6 +573,214 @@ public class UnoView extends javax.swing.JFrame {
     private void drawButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drawButtonActionPerformed
         controller.draw();
     }//GEN-LAST:event_drawButtonActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        setDiscardPile(getImage(currentHand[0]));
+        controller.discardCard(currentHand[0]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        setDiscardPile(getImage(currentHand[1]));
+        controller.discardCard(currentHand[1]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        setDiscardPile(getImage(currentHand[2]));
+        controller.discardCard(currentHand[2]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        setDiscardPile(getImage(currentHand[3]));
+        controller.discardCard(currentHand[3]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        setDiscardPile(getImage(currentHand[4]));
+        controller.discardCard(currentHand[4]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        setDiscardPile(getImage(currentHand[5]));
+        controller.discardCard(currentHand[5]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        setDiscardPile(getImage(currentHand[6]));
+        controller.discardCard(currentHand[6]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        setDiscardPile(getImage(currentHand[7]));
+        controller.discardCard(currentHand[7]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        setDiscardPile(getImage(currentHand[8]));
+        controller.discardCard(currentHand[8]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        setDiscardPile(getImage(currentHand[9]));
+        controller.discardCard(currentHand[9]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        setDiscardPile(getImage(currentHand[10]));
+        controller.discardCard(currentHand[10]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        setDiscardPile(getImage(currentHand[11]));
+        controller.discardCard(currentHand[11]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        setDiscardPile(getImage(currentHand[12]));
+        controller.discardCard(currentHand[12]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel13MouseClicked
+
+    private void jLabel14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel14MouseClicked
+        setDiscardPile(getImage(currentHand[13]));
+        controller.discardCard(currentHand[13]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel14MouseClicked
+
+    private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
+        setDiscardPile(getImage(currentHand[14]));
+        controller.discardCard(currentHand[14]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel15MouseClicked
+
+    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
+        setDiscardPile(getImage(currentHand[15]));
+        controller.discardCard(currentHand[15]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        setDiscardPile(getImage(currentHand[16]));
+        controller.discardCard(currentHand[16]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        controller.discardCard(currentHand[17]);
+        setDiscardPile(getImage(currentHand[17]));
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        setDiscardPile(getImage(currentHand[18]));
+        controller.discardCard(currentHand[18]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel19MouseClicked
+
+    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
+        setDiscardPile(getImage(currentHand[19]));
+        controller.discardCard(currentHand[19]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel20MouseClicked
+
+    private void jLabel21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MouseClicked
+        controller.discardCard(currentHand[20]);
+        setDiscardPile(getImage(currentHand[20]));
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel21MouseClicked
+
+    private void jLabel22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel22MouseClicked
+        setDiscardPile(getImage(currentHand[21]));
+        controller.discardCard(currentHand[21]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel22MouseClicked
+
+    private void jLabel23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel23MouseClicked
+        setDiscardPile(getImage(currentHand[22]));
+        controller.discardCard(currentHand[22]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel23MouseClicked
+
+    private void jLabel24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel24MouseClicked
+        setDiscardPile(getImage(currentHand[23]));
+        controller.discardCard(currentHand[23]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel24MouseClicked
+
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+        setDiscardPile(getImage(currentHand[24]));
+        controller.discardCard(currentHand[24]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel25MouseClicked
+
+    private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
+        setDiscardPile(getImage(currentHand[25]));
+        controller.discardCard(currentHand[25]);
+        if (controller.invalidPlay()){
+            setDiscardPile(getImage(controller.getTopOfDeck()));
+        }
+    }//GEN-LAST:event_jLabel26MouseClicked
     
     public void setPlayers1Label(int handSize){
         player1Label.setText("Player " + 1 + ":  " + handSize + " cards");
@@ -463,10 +817,12 @@ public class UnoView extends javax.swing.JFrame {
     
     public void hideDrawButton(){
         this.drawButton.setVisible(false);
+        this.endTurnButton.setVisible(true);
     }
     
     public void showDrawButton(){
         this.drawButton.setVisible(true);
+        this.endTurnButton.setVisible(false);
     }
     
     public void setCurrentPlayerLabel(int currentPlayer){
@@ -477,25 +833,222 @@ public class UnoView extends javax.swing.JFrame {
         controller.displayHandCards();
     }
     
+    public void clearDiscardPile(){
+        topOfDiscardPile.setVisible(false);
+    }
+    
     public ImageIcon getImage(UnoCard card){
-        ImageIcon image = new ImageIcon("images/UnoRed1.JPG");
         
+        ImageIcon image;
+        String location = "";
+        
+        if(card instanceof UnoNumber){
+            if("blue".equals(card.getColor())){
+                switch (((UnoNumber) card).getNumber()) {
+                    case 0:
+                        location = "images/Blue0.JPG";
+                        break;
+                    case 1:
+                        location = "images/Blue1.JPG";
+                        break;
+                    case 2:
+                        location = "images/Blue2.JPG";
+                        break;
+                    case 3:
+                        location = "images/Blue3.JPG";
+                        break;
+                    case 4:
+                        location = "images/Blue4.JPG";
+                        break;
+                    case 5:
+                        location = "images/Blue5.JPG";
+                        break;
+                    case 6:
+                        location = "images/Blue6.JPG";
+                        break;
+                    case 7:
+                        location = "images/Blue7.JPG";
+                        break;
+                    case 8:
+                        location = "images/Blue8.JPG";
+                        break;
+                    default:
+                        location = "images/Blue9.JPG";
+                        break;
+                }
+            } else if ("green".equals(card.getColor())){
+                switch (((UnoNumber) card).getNumber()) {
+                    case 0:
+                        location = "images/Green0.JPG";
+                        break;
+                    case 1:
+                        location = "images/Green1.JPG";
+                        break;
+                    case 2:
+                        location = "images/Green2.JPG";
+                        break;
+                    case 3:
+                        location = "images/Green3.JPG";
+                        break;
+                    case 4:
+                        location = "images/Green4.JPG";
+                        break;
+                    case 5:
+                        location = "images/Green5.JPG";
+                        break;
+                    case 6:
+                        location = "images/Green6.JPG";
+                        break;
+                    case 7:
+                        location = "images/Green7.JPG";
+                        break;
+                    case 8:
+                        location = "images/Green8.JPG";
+                        break;
+                    default:
+                        location = "images/Green9.JPG";
+                        break;
+                }
+            } else if ("red".equals(card.getColor())){
+                switch (((UnoNumber) card).getNumber()) {
+                    case 0:
+                        location = "images/Red0.png";
+                        break;
+                    case 1:
+                        location = "images/Red1.JPG";
+                        break;
+                    case 2:
+                        location = "images/Red2.JPG";
+                        break;
+                    case 3:
+                        location = "images/Red3.JPG";
+                        break;
+                    case 4:
+                        location = "images/Red4.JPG";
+                        break;
+                    case 5:
+                        location = "images/Red5.JPG";
+                        break;
+                    case 6:
+                        location = "images/Red6.JPG";
+                        break;
+                    case 7:
+                        location = "images/Red7.JPG";
+                        break;
+                    case 8:
+                        location = "images/Red8.JPG";
+                        break;
+                    default:
+                        location = "images/Red9.JPG";
+                        break;
+                }
+            } else if ("yellow".equals(card.getColor())){
+                switch (((UnoNumber) card).getNumber()) {
+                    case 0:
+                        location = "images/Yellow0.JPG";
+                        break;
+                    case 1:
+                        location = "images/Yellow1.JPG";
+                        break;
+                    case 2:
+                        location = "images/Yellow2.JPG";
+                        break;
+                    case 3:
+                        location = "images/Yellow3.JPG";
+                        break;
+                    case 4:
+                        location = "images/Yellow4.JPG";
+                        break;
+                    case 5:
+                        location = "images/Yellow5.JPG";
+                        break;
+                    case 6:
+                        location = "images/Yellow6.JPG";
+                        break;
+                    case 7:
+                        location = "images/Yellow7.JPG";
+                        break;
+                    case 8:
+                        location = "images/Yellow8.JPG";
+                        break;
+                    default:
+                        location = "images/Yellow9.JPG";
+                        break;
+                }
+            }
+        } else if (card instanceof UnoWild){
+            location = "images/Wild.JPG";
+        } else if (card instanceof UnoWildDraw){
+            location = "images/WildDraw4.JPG";
+        } else if (card instanceof UnoSkip){
+            if("blue".equals(card.getColor())){
+                location = "images/BlueSkip.JPG";
+            } else if ("green".equals(card.getColor())){
+                location = "images/GreenSkip.JPG";
+            } else if ("red".equals(card.getColor())){
+                location = "images/RedSkip.JPG";
+            } else {
+                location = "images/YellowSkip.JPG";
+            }
+        } else if (card instanceof UnoReverse){
+            if("blue".equals(card.getColor())){
+                location = "images/BlueReverse.JPG";
+            } else if ("green".equals(card.getColor())){
+                location = "images/GreenReverse.JPG";
+            } else if ("red".equals(card.getColor())){
+                location = "images/RedReverse.JPG";
+            } else {
+                location = "images/YellowReverse.JPG";
+            }
+        } else {
+            if("blue".equals(card.getColor())){
+                location = "images/BlueDraw2.JPG";
+            } else if ("green".equals(card.getColor())){
+                location = "images/GreenDraw2.JPG";
+            } else if ("red".equals(card.getColor())){
+                location = "images/RedDraw2.JPG";
+            } else {
+                location = "images/YellowDraw2.JPG";
+            }
+        }
+        image = new javax.swing.ImageIcon(getClass().getResource("/uno/" + location));
         return image;
     }
     
     public void setDiscardPile(ImageIcon Image){
-        
+        topOfDiscardPile.setIcon(Image);
     }
     
-    protected ImageIcon createImageIcon(String path) {
-      java.net.URL imgURL = getClass().getResource(path);
-      if (imgURL != null) {
-         return new ImageIcon(imgURL);
-      } else {            
-         System.err.println("Couldn't find file: " + path);
-         return null;
-      }
-   }
+    public String chooseColor(){
+        String color = "";
+        
+        String[] colors = {"red", "yellow", "blue", "green"};
+        int colorOptions = JOptionPane.showOptionDialog(this,
+            "Choose a color",
+            "Wild Card",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            colors,
+            colors[0]);
+
+        switch (colorOptions) {
+            case 0:
+            color = "red";
+            break;
+            case 1:
+            color = "yellow";
+            break;
+            case 2:
+            color = "blue";
+            break;
+            default:
+            color = "green";
+            break;
+        }
+        
+        return color;
+    }
     
     public void setLabelArray(){
         labelArray[0] = jLabel1;
@@ -566,6 +1119,7 @@ public class UnoView extends javax.swing.JFrame {
     private javax.swing.JLabel player3Label;
     private javax.swing.JLabel player4Label;
     private javax.swing.JButton start;
+    private javax.swing.JLabel topOfDiscardPile;
     private javax.swing.JButton unoButton;
     // End of variables declaration//GEN-END:variables
 }

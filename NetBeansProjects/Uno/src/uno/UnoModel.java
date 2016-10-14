@@ -9,11 +9,20 @@ public final class UnoModel {
     private int currentPlayerIndex = 0;
     private boolean reverse = false;
     private int numPlayers = 0;
+    private boolean cantPlay = false;
+    private boolean determineColor = false;
     
     public UnoModel(){
             
     }
     
+    public boolean getCantPlay(){
+        return cantPlay;
+    }
+    
+    public void setCantPlay(){
+        cantPlay = false;
+    }
     
     public void startGame(int numPlayers){
         deck = new UnoDeck();
@@ -41,15 +50,17 @@ public final class UnoModel {
     public void discard(UnoCard card){
         if(card instanceof UnoNumber){
             compareNumbers((UnoNumber)card);
-        }
-        else if (card instanceof UnoWild){
+        } else if (card instanceof UnoWild){
             discardCard(card);
+            determineColor = true;
+            nextPlayer();
         } else if (card instanceof UnoWildDraw){
             discardCard(card);
+            determineColor = true;
+            nextPlayer();
             draw(4);
             nextPlayer();
-        }
-        else {
+        } else {
             compareColors(card);
         }
     }
@@ -96,11 +107,17 @@ public final class UnoModel {
         if (topOfPile instanceof UnoNumber){
             if((card.getNumber() == ((UnoNumber)topOfPile).getNumber()) || (card.getColor().equals(topOfPile.getColor()))){
                 discardCard(card);
+                nextPlayer();
             } else {
-                    // Display error message
+                    cantPlay = true;
             }
         } else {
-            // Display error message
+            if(card.getColor().equals(topOfPile.getColor())){
+                discardCard(card);
+                nextPlayer();
+            } else {
+                cantPlay = true;
+            }
         }
     }
     
@@ -110,23 +127,38 @@ public final class UnoModel {
             if(card instanceof UnoReverse){
                 reverse = !reverse;
                 discardCard(card);
+                nextPlayer();
             } else if (card instanceof UnoSkip){
                 discardCard(card);
                 nextPlayer();
-            } else {
+                nextPlayer();
+            } else if (card instanceof UnoDraw){
                 discardCard(card);
+                nextPlayer();
                 draw(2);
                 nextPlayer();
             }
+        } else if (card instanceof UnoReverse && topOfPile instanceof UnoReverse){
+            reverse = !reverse;
+            discardCard(card);
+            nextPlayer();
+        } else if (card instanceof UnoSkip && topOfPile instanceof UnoSkip){
+            discardCard(card);
+            nextPlayer();
+            nextPlayer();
+        } else if (card instanceof UnoDraw && topOfPile instanceof UnoDraw){
+            discardCard(card);
+            nextPlayer();
+            draw(2);
+            nextPlayer();
         } else {
-            // Display error message
+            cantPlay = true;
         }
     }
     
     public void discardCard(UnoCard card){
         deck.setTopOfDiscardPile(card);
         currentPlayer.removeCard(card);
-        nextPlayer();
     }
     
     public boolean UNO(){
@@ -135,5 +167,13 @@ public final class UnoModel {
     
     public UnoCard getTopOfDeck(){
         return deck.getTopOfDiscardPile();
+    }
+    
+    public boolean getWildCardPopUp(){
+        return determineColor;
+    }
+    
+    public void setWildCardPopUp(){
+        this.determineColor = false;
     }
 }
